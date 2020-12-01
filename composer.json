@@ -1,0 +1,43 @@
+{
+    "name": "osjava/laravel-tools",
+    "description": "This is some tools for applications develop on laravel",
+    "keywords": ["laravel", "apidoc", "asciidoc"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lidapeng",
+            "email": "lidp@osjava.net"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "symfony/finder": "^5.1",
+        "laravel/framework": "^8.0",
+        "ext-json": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "QFrame\\Console\\": "src/Console/",
+            "QFrame\\Exceptions\\": "src/Exceptions/",
+            "QFrame\\Supports\\": "src/Supports/",
+            "QFrame\\Providers\\": "src/Providers/"
+        },
+        "files": [
+            "src/Supports/helpers.php",
+            "src/Supports/constants.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "QFrame\\Providers\\ApidocServiceProvider"
+            ]
+        }
+    }
+}

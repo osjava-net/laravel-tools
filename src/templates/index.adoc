@@ -1,0 +1,12 @@
+= Document Title
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: highlightjs
+:sectnums:
+:sectnumlevels: 3
+:table-caption!:
+:sectlinks:
+:nofooter:
+:apiRoot: _src/App
+:apiBase: http(s)://{domain}:{port}/{appName}/api
