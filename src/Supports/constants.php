@@ -13,7 +13,15 @@ const ERR_INVALID_APPLICATION = ERR_SECRET_EXCEPTION + 3;
 /** The application is disabled. */
 const ERR_DISABLED_APPLICATION = ERR_SECRET_EXCEPTION + 4;
 
+const ERR_APP_SECRET_EXCEPTION = ERR_SECRET_EXCEPTION + 100;
+
 // Exception of clients that needs to be fixed by clients.
 const ERR_REQUEST_EXCEPTION = 2000;
 /** A parameters is not in the request or the parameter's value is wrong. */
 const ERR_INVALID_PARAM = ERR_REQUEST_EXCEPTION + 1;
+
+const ERR_APP_REQUEST_EXCEPTION = ERR_REQUEST_EXCEPTION + 100;
+
+const ERR_APP_EXCEPTION = 3000;
+
+const ERR_THIRD_EXCEPTION = 4000;
