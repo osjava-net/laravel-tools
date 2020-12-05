@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Log;
  * </apidoc>
  * @package App\Exceptions
  */
-class ApiException extends \RuntimeException
+class AppException extends \RuntimeException
 {
     /**
      * ApiException constructor.
@@ -35,7 +35,7 @@ class ApiException extends \RuntimeException
     }
 
     public static function of($code, $message) {
-        return new ApiException($code, $message);
+        return new AppException($code, $message);
     }
 
     /**
