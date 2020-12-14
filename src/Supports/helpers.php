@@ -1,10 +1,11 @@
 <?php
 
-use QFrame\Exceptions\AppException;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use QFrame\Exceptions\AppException;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Process\Process;
 
 if (!function_exists('path_concat')) {
     /**
@@ -153,6 +154,20 @@ if (!function_exists('get_request_param')) {
     }
 }
 
+if (!function_exists('get_request_json')) {
+    /**
+     * @param Request $request
+     * @return array|mixed
+     */
+    function get_request_json($request) {
+        if($request->header('content-type') === 'application/json') {
+            $content = $request->getContent();
+            return is_json($content) ? json_decode($content, true) : array();
+        }
+        return $request->json()->all();
+    }
+}
+
 if (!function_exists('api_success')) {
     /**
      * @param null|mixed $data
@@ -239,5 +254,31 @@ if (!function_exists('exp_not_found_application_key')) {
 if (!function_exists('exp_disabled_application')) {
     function exp_disabled_application($key) {
         return AppException::of(ERR_DISABLED_APPLICATION, "The application[$key] is disabled");
+    }
+}
+
+if (!function_exists('exp_internal')) {
+    function exp_internal($message) {
+        return AppException::of(ERR_APP_EXCEPTION, $message);
+    }
+}
+
+if (!function_exists('exp_third_party')) {
+    function exp_third_party($message, $code=ERR_THIRD_EXCEPTION) {
+        return AppException::of($code, $message);
+    }
+}
+
+if (!function_exists('shell')) {
+    function shell($commands, $path=null) {
+        $output = [];
+
+        foreach ($commands as $command) {
+            $process = Process::fromShellCommandline($command, $path);
+            $process->mustRun();
+            $output[$command] = trim($process->getOutput());
+        }
+
+        return $output;
     }
 }
