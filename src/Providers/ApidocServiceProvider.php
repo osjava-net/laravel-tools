@@ -25,8 +25,8 @@ class ApidocServiceProvider extends ServiceProvider implements DeferrableProvide
                 $this->publishes([$template=>resource_path('docs/index.adocdocker')]);
             }
 
-            if (!is_dir(app_path('Supports'))) {
-                mkdir(app_path('Supports'));
+            if (!is_dir(app_path('Support'))) {
+                mkdir(app_path('Support'));
             }
         }
 
