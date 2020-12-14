@@ -1,4 +1,4 @@
-<?php namespace QFrame\Supports;
+<?php namespace QFrame\Support;
 
 use Illuminate\Support\Facades\Log;
 use ReflectionClass;

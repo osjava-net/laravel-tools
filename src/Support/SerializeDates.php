@@ -1,7 +1,7 @@
 <?php
 
 
-namespace QFrame\Supports;
+namespace QFrame\Support;
 
 
 use DateTimeInterface;

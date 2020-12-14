@@ -20,12 +20,12 @@
         "psr-4": {
             "QFrame\\Console\\": "src/Console/",
             "QFrame\\Exceptions\\": "src/Exceptions/",
-            "QFrame\\Supports\\": "src/Supports/",
+            "QFrame\\Support\\": "src/Support/",
             "QFrame\\Providers\\": "src/Providers/"
         },
         "files": [
-            "src/Supports/helpers.php",
-            "src/Supports/constants.php"
+            "src/Support/helpers.php",
+            "src/Support/constants.php"
         ]
     },
     "autoload-dev": {
