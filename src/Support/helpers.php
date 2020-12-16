@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use QFrame\Exceptions\AppException;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
@@ -15,14 +16,14 @@ if (!function_exists('path_concat')) {
      * @param string|array $subPath
      * @return string
      */
-    function path_concat($basePath, $subPath) {
-        $fullPath = $basePath;
-        if (is_string($subPath)) {
-            $fullPath .= '/' . trim($subPath, '/');
-        } else {
-            foreach ($subPath as $item) {
-                $fullPath .= '/' . trim($item, '/');
-            }
+    function path_concat($basePath, ...$subPath) {
+        $fullPath = Str::of($basePath);
+        if ($fullPath->endsWith('/')) {
+            $fullPath = $fullPath->beforeLast('/');
+        }
+
+        foreach ($subPath as $item) {
+            $fullPath .= '/' . trim($item, '/ ');
         }
 
         return $fullPath;
@@ -160,7 +161,7 @@ if (!function_exists('get_request_json')) {
      * @return array|mixed
      */
     function get_request_json($request) {
-        if($request->header('content-type') === 'application/json') {
+        if ($request->header('content-type') === 'application/json') {
             $content = $request->getContent();
             return is_json($content) ? json_decode($content, true) : array();
         }
@@ -294,13 +295,13 @@ if (!function_exists('exp_command_line')) {
 }
 
 if (!function_exists('exp_third_party')) {
-    function exp_third_party($message, $code=ERR_THIRD_EXCEPTION) {
+    function exp_third_party($message, $code = ERR_THIRD_EXCEPTION) {
         return AppException::of($code, $message);
     }
 }
 
 if (!function_exists('exec_command_line')) {
-    function exec_command_line($commands, $path=null) {
+    function exec_command_line($commands, $path = null) {
         $output = [];
 
         foreach ($commands as $command) {
