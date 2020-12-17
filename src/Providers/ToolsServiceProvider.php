@@ -5,7 +5,7 @@ use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use QFrame\Console\ApiDocGenerator;
 
-class ApidocServiceProvider extends ServiceProvider implements DeferrableProvider
+class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Boot the service provider.

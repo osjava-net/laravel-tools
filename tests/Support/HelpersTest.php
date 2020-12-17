@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 class HelpersTest extends TestCase
 {
     public function testShell() {
-        $commands = ['pwd', 'ls -l'];
+        $commands = ['pwd', 'git describe --always --tags --dirty'];
 
         $output = exec_command_line($commands);
 

@@ -21,7 +21,8 @@
             "QFrame\\Console\\": "src/Console/",
             "QFrame\\Exceptions\\": "src/Exceptions/",
             "QFrame\\Support\\": "src/Support/",
-            "QFrame\\Providers\\": "src/Providers/"
+            "QFrame\\Providers\\": "src/Providers/",
+            "QFrame\\Services\\": "src/Services/"
         },
         "files": [
             "src/Support/helpers.php",
@@ -36,11 +37,17 @@
     "extra": {
         "laravel": {
             "providers": [
-                "QFrame\\Providers\\ApidocServiceProvider"
+                "ToolsServiceProvider"
             ]
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.0",
+        "mockery/mockery": "^1.3.1"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
+        ]
     }
 }
