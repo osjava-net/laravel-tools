@@ -37,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ToolsServiceProvider"
+                "QFrame\\Providers\\ToolsServiceProvider"
             ]
         }
     },
