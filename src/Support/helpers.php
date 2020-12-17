@@ -304,7 +304,7 @@ if (!function_exists('exec_command_line')) {
     function exec_command_line($command, $path = null) {
         $process = Process::fromShellCommandline($command, $path);
         $process->mustRun();
-        if ($process->isStarted()) {
+        if ($process->isSuccessful()) {
             return trim($process->getOutput());
         } else {
             throw exp_command_line($process->getErrorOutput());
