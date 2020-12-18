@@ -67,7 +67,7 @@ class ApiDocCommand extends Command
         }
 
         if(!File::deleteDirectory(config('apidoc.doc_folder') . '/_src')) {
-            Log::debug("Delete the docs directory is failure.");
+            Log::debug("Delete the docs directory is failure.", [config('apidoc.doc_folder') . '/_src']);
         }
 
         foreach (Arr::wrap($this->sourceFolder) as $source) {
