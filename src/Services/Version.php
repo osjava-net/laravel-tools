@@ -23,19 +23,18 @@ class Version
         $this->parseVersion();
     }
 
-
-    public function full() {
+    public function get() {
         $version = Str::of("$this->major.$this->minor.$this->patch");
         if (!empty($this->preRelease)) {
-            $version->append("-", $this->preRelease);
+            $version = $version->append("-", $this->preRelease);
         }
 
         if (!empty($this->build)) {
-            $version->append("+", $this->build);
+            $version = $version->append("+", $this->build);
         }
 
         if ($this->dirty) {
-            $version->append("-dirty");
+            $version = $version->append("-dirty");
         }
 
         return $version;
@@ -47,11 +46,33 @@ class Version
         Log::debug("Get version from GIT: $version");
         if ($version->endsWith('-dirty')) {
             $this->dirty = true;
+            Log::debug("Set the dirty flag to $this->dirty");
             $version = $version->beforeLast('-');
         }
 
-        if ($version->match('/(-g)?([a-z0-9]{7})$/')) {
+        Log::debug("Version without flag dirty: $version");
 
+        if (preg_match('/(-g)?([a-z0-9]{7})$/i', $version, $out)) {
+            $this->build = $out[2];
+            if($version->length() <= 7) return;
+
+            $version = $version->beforeLast('-')->beforeLast('-');
+        }
+
+        if(empty($version)) return;
+
+        $arrVersion = explode('-', $version);
+        if (count($arrVersion) > 1) {
+            $this->preRelease = $arrVersion[1];
+        }
+        $arrVersion = explode('.', $arrVersion[0]);
+        $this->major = $arrVersion[0];
+
+        if (count($arrVersion) > 1) {
+            $this->minor = $arrVersion[1];
+        }
+        if (count($arrVersion) > 2) {
+            $this->patch = $arrVersion[2];
         }
     }
 }
