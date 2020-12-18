@@ -57,7 +57,7 @@ class VersionCommand extends Command
      * @return mixed
      */
     public function handle() {
-        $this->getOutput()->info(Version::get());
+        $this->getOutput()->info('Version: ' . Version::get());
         return 0;
     }
 }

@@ -17,7 +17,7 @@ class ApiDocCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'apidoc {--v|view : Display the details for generation docs}';
+    protected $signature = 'apidoc {--log : Display the details for generation docs}';
 
     /**
      * The console command description.
@@ -75,7 +75,7 @@ class ApiDocCommand extends Command
             $files = path_finder($source, $this->excludes, sprintf('*%s', config('apidoc.class_suffix')));
 
             foreach ($files as $file) {
-                if ($this->hasOption('view')) {
+                if ($this->hasOption('log')) {
                     Log::info("Generate doc form: $file");
                 }
 
