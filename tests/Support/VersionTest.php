@@ -12,10 +12,6 @@ class VersionTest extends TestCase
 
     }
 
-    protected function getPackageProviders($app) {
-        return [ToolsServiceProvider::class,];
-    }
-
     public function testFullVersion() {
         $this->mock_command_line('1.0.1-beta.2020.01-2-gd000854-dirty');
 

@@ -2,6 +2,7 @@
 
 use Monolog\Handler\StreamHandler;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use QFrame\Providers\ToolsServiceProvider;
 use Symfony\Component\Process\Process;
 
 class TestCase extends BaseTestCase
@@ -37,6 +38,10 @@ class TestCase extends BaseTestCase
                 ],
             ]
         ]);
+    }
+
+    protected function getPackageProviders($app) {
+        return [ToolsServiceProvider::class,];
     }
 
     protected function mock_command_line($output, $command = null, $path = null) {
