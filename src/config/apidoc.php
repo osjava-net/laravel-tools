@@ -2,17 +2,20 @@
 
 return [
     'source_folder' => [
-        app_path('/Http/Controllers'),
-        app_path('/Services'),
-        app_path('/Models'),
-        app_path('/Supports'),
-        app_path('/Exceptions'),
+        app_path('Http/Controllers'),
+        app_path('Services'),
+        app_path('Models'),
+        app_path('Support'),
+        app_path('Exceptions'),
     ],
 
     /*
      * Exclude some files.
      */
-    'excludes' => null,
+    'excludes' => [
+        app_path('Support/helpers.php'),
+        app_path('Support/constants.php'),
+    ],
 
     /*
      * Static output folder: HTML documentation and assets will be generated in this folder.

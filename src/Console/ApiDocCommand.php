@@ -71,6 +71,8 @@ class ApiDocCommand extends Command
         }
 
         foreach (Arr::wrap($this->sourceFolder) as $source) {
+            if(!is_dir($source)) continue;
+
             /** @var Finder $files */
             $files = path_finder($source, $this->excludes, sprintf('*%s', config('apidoc.class_suffix')));
 
