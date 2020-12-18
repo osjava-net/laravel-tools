@@ -22,7 +22,6 @@ abstract class ValueObject implements \JsonSerializable
     }
 
     public function __set($name, $value) {
-        Log::debug("Set $name");
         $this->__data[$name] = $value;
     }
 
