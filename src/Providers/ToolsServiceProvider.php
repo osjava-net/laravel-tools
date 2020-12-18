@@ -24,7 +24,7 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
 
             if (!is_dir(resource_path('docs'))) {
                 mkdir(resource_path('docs'));
-                $this->publishes([$template=>resource_path('docs/index.adocdocker')]);
+                $this->publishes([$template=>resource_path('docs/index.adoc')]);
             }
 
             if (!is_dir(app_path('Support'))) {
