@@ -71,7 +71,7 @@ class ApiDocEntity
      * @param string $ext
      */
     public function saveTo($rootPath, $ext) {
-        $outputPath = path_concat($rootPath, [preg_replace('/\\\\/m', '/', $this->package)]);
+        $outputPath = path_concat($rootPath, preg_replace('/\\\\/m', '/', $this->package));
         $content = $this->generateTag($this->className, $this->classComment);
 
         foreach ($this->methodComments as $name => $comment) {
