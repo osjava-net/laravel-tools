@@ -21,8 +21,7 @@
             "QFrame\\Console\\": "src/Console/",
             "QFrame\\Exceptions\\": "src/Exceptions/",
             "QFrame\\Support\\": "src/Support/",
-            "QFrame\\Providers\\": "src/Providers/",
-            "QFrame\\Services\\": "src/Services/"
+            "QFrame\\Providers\\": "src/Providers/"
         },
         "files": [
             "src/Support/helpers.php",

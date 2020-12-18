@@ -3,7 +3,9 @@
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
-use QFrame\Console\ApiDocGenerator;
+use QFrame\Console\ApiDocCommand;
+use QFrame\Console\VersionCommand;
+use QFrame\Support\Version;
 
 class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -40,11 +42,11 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function register()
     {
-        $this->app->singleton('command.apidoc', function () {
-            return new ApiDocGenerator();
+        $this->app->singleton('version', function () {
+            return new Version();
         });
 
-        $this->commands(['command.apidoc']);
+        $this->commands([ApiDocCommand::class, VersionCommand::class]);
     }
 
     /**

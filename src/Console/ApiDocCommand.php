@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
 
-class ApiDocGenerator extends Command
+class ApiDocCommand extends Command
 {
     /**
      * The name and signature of the console command.

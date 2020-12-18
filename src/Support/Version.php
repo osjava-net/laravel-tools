@@ -1,4 +1,4 @@
-<?php namespace QFrame\Services;
+<?php namespace QFrame\Support;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -17,7 +17,7 @@ class Version
     private const COMMAND = 'git describe --always --tags --dirty';
 
     /**
-     * Version constructor.
+     * VersionCommand constructor.
      */
     public function __construct() {
         $this->parseVersion();
@@ -49,8 +49,6 @@ class Version
             Log::debug("Set the dirty flag to $this->dirty");
             $version = $version->beforeLast('-');
         }
-
-        Log::debug("Version without flag dirty: $version");
 
         if (preg_match('/(-g)?([a-z0-9]{7})$/i', $version, $out)) {
             $this->build = $out[2];
