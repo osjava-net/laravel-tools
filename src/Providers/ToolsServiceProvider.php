@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Foundation\Application as LaravelApplication;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use QFrame\Console\ApiDocCommand;
 use QFrame\Console\VersionCommand;
@@ -33,6 +34,7 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
         }
 
         $this->mergeConfigFrom($source, 'apidoc');
+        Blade::directive('version', fn() => \QFrame\Support\Facades\Version::get());
     }
 
     /**
