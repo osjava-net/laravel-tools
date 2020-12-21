@@ -1,8 +1,6 @@
 <?php namespace Tests\Support;
 
-use QFrame\Providers\ToolsServiceProvider;
-use QFrame\Support\Version;
-use Symfony\Component\Process\Process;
+use QFrame\Support\Facades\Version;
 use Tests\TestCase;
 
 class VersionTest extends TestCase
@@ -15,10 +13,20 @@ class VersionTest extends TestCase
     public function testFullVersion() {
         $this->mock_command_line('1.0.1-beta.2020.01-2-gd000854-dirty');
 
-        $version = \QFrame\Support\Facades\Version::get();//new Version();
+        $version = Version::get();//new Version();
 
         echo 'Current Version: '. $version;
 
         self::assertEquals('1.0.1-beta.2020.01+d000854-dirty', $version);
+    }
+
+    public function testOnlyVersion() {
+        $this->mock_command_line('1.0.1-beta');
+
+        $version = Version::get();//new Version();
+
+        echo 'Current Version: '. $version;
+
+        self::assertEquals('1.0.1-beta', $version);
     }
 }
