@@ -1,6 +1,5 @@
 <?php namespace QFrame\Support;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class Version
@@ -40,7 +39,7 @@ class Version
         return $version;
     }
 
-    private function parseVersion($version = null) {
+    private function parseVersion() {
         // 1.0.1-2-gd000854-dirty
         $version = Str::of(exec_command_line(self::COMMAND));
         if ($version->endsWith('-dirty')) {
