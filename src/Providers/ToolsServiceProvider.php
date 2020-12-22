@@ -34,7 +34,7 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
         }
 
         $this->mergeConfigFrom($source, 'apidoc');
-        Blade::directive('version', fn() => \QFrame\Support\Facades\Version::get());
+        Blade::directive('version', fn() => '<?php echo app("version")->get(); ?>');
     }
 
     /**
