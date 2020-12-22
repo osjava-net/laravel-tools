@@ -57,6 +57,6 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
      * @return array
      */
     public function provides() {
-        return ['command.apidoc', 'version'];
+        return ['version'];
     }
 }
