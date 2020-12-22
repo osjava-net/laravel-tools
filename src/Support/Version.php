@@ -43,10 +43,8 @@ class Version
     private function parseVersion($version = null) {
         // 1.0.1-2-gd000854-dirty
         $version = Str::of(exec_command_line(self::COMMAND));
-        Log::debug("Get version from GIT: $version");
         if ($version->endsWith('-dirty')) {
             $this->dirty = true;
-            Log::debug("Set the dirty flag to $this->dirty");
             $version = $version->beforeLast('-');
         }
 
