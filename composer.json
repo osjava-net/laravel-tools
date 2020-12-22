@@ -18,10 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "QFrame\\Console\\": "src/Console/",
-            "QFrame\\Exceptions\\": "src/Exceptions/",
-            "QFrame\\Support\\": "src/Support/",
-            "QFrame\\Providers\\": "src/Providers/"
+            "QFrame\\": "src/"
         },
         "files": [
             "src/Support/helpers.php",

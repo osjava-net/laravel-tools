@@ -33,7 +33,7 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
         }
 
         $this->mergeConfigFrom($source, 'apidoc');
-        Blade::directive('appVersion', function () {
+        Blade::directive('version', function () {
             return "<?php echo app('version')->get(); ?>";
         });
     }
@@ -57,6 +57,6 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
      * @return array
      */
     public function provides() {
-        return ['command.apidoc'];
+        return ['command.apidoc', 'version'];
     }
 }
