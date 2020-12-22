@@ -15,17 +15,16 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        $source = realpath($raw = __DIR__.'/../config/apidoc.php') ?: $raw;
-        $template = realpath($raw = __DIR__.'/../templates/index.adoc') ?: $raw;
+    public function boot() {
+        $source = realpath($raw = __DIR__ . '/../config/apidoc.php') ?: $raw;
+        $template = realpath($raw = __DIR__ . '/../templates/index.adoc') ?: $raw;
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('apidoc.php')]);
 
             if (!is_dir(resource_path('docs'))) {
                 mkdir(resource_path('docs'));
-                $this->publishes([$template=>resource_path('docs/index.adoc')]);
+                $this->publishes([$template => resource_path('docs/index.adoc')]);
             }
 
             if (!is_dir(app_path('Support'))) {
@@ -34,7 +33,9 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
         }
 
         $this->mergeConfigFrom($source, 'apidoc');
-        Blade::directive('version', fn() => '<?php echo app("version")->get(); ?>');
+        Blade::directive('appVersion', function () {
+            return "<?php echo app('version')->get(); ?>";
+        });
     }
 
     /**
@@ -42,8 +43,7 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         $this->app->singleton('version', function () {
             return new Version();
         });
@@ -56,8 +56,7 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
      *
      * @return array
      */
-    public function provides()
-    {
+    public function provides() {
         return ['command.apidoc'];
     }
 }
