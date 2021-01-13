@@ -146,6 +146,15 @@ if (!function_exists('is_not_json')) {
     }
 }
 
+if (!function_exists('get_request_header')) {
+    function get_request_header($key, $default = null) {
+        $value = \request()->header($key);
+        if (empty($value) && func_num_args() < 2) throw exp_invalid_header($key);
+
+        return $value ?? $default;
+    }
+}
+
 if (!function_exists('get_request_param')) {
     function get_request_param($key, $default = null) {
         $value = request($key);
@@ -224,6 +233,12 @@ if (!function_exists('exp_invalid_request')) {
 if (!function_exists('exp_invalid_param')) {
     function exp_invalid_param($key, $errorCode = ERR_INVALID_PARAM) {
         return AppException::of($errorCode, "Not found the parameter[$key] or its value is NULL.");
+    }
+}
+
+if (!function_exists('exp_invalid_header')) {
+    function exp_invalid_header($key, $errorCode = ERR_REQUEST_HEADER) {
+        return AppException::of($errorCode, "Not found the header[$key] or its value is NULL.");
     }
 }
 
