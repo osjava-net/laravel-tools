@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Illuminate\Encryption\Encrypter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -175,6 +176,26 @@ if (!function_exists('get_request_json')) {
             return is_json($content) ? json_decode($content, true) : array();
         }
         return $request->json()->all();
+    }
+}
+
+if (!function_exists('api_token')) {
+    /**
+     * @param string $key
+     * @param int $timer
+     * @param array $params
+     * @return string
+     */
+    function api_token($key, $timer, $params) {
+        ksort($params);
+
+        $source = $timer;
+        foreach ($params as $value) {
+            $source .= $value;
+        }
+
+        $encoder = new Encrypter($key, config('app.cipher'));
+        return md5($encoder->encryptString($source));
     }
 }
 
