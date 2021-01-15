@@ -44,7 +44,9 @@ const ERR_MISSING_CONFIG = ERR_APP_EXCEPTION + 102;
 /** An error code is returned when a command line was executed. */
 const ERR_COMMAND_LINE = ERR_APP_EXCEPTION + 103;
 
-const ERR_REQUEST_HEADER = ERR_APP_EXCEPTION + 104;
+const ERR_INVALID_HEADER = ERR_APP_EXCEPTION + 104;
+
+const ERR_INVALID_STATUS = ERR_APP_EXCEPTION + 105;
 
 /** Application extend error codes from the value */
 const ERR_APP_EXTENDED = 3000;

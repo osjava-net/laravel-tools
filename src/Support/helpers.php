@@ -258,7 +258,7 @@ if (!function_exists('exp_invalid_param')) {
 }
 
 if (!function_exists('exp_invalid_header')) {
-    function exp_invalid_header($key, $errorCode = ERR_REQUEST_HEADER) {
+    function exp_invalid_header($key, $errorCode = ERR_INVALID_HEADER) {
         return AppException::of($errorCode, "Not found the header[$key] or its value is NULL.");
     }
 }
@@ -327,6 +327,12 @@ if (!function_exists('exp_missing_configuration')) {
 if (!function_exists('exp_command_line')) {
     function exp_command_line($message, $code = ERR_COMMAND_LINE) {
         return AppException::of($code, $message);
+    }
+}
+
+if (!function_exists('exp_invalid_status')) {
+    function exp_invalid_status($message, $errorCode = ERR_INVALID_STATUS) {
+        return AppException::of($errorCode, $message);
     }
 }
 
