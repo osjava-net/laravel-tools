@@ -288,6 +288,12 @@ if (!function_exists('exp_not_found_application_key')) {
     }
 }
 
+if (!function_exists('exp_invalid_application_key')) {
+    function exp_invalid_application_key($key) {
+        return AppException::of(ERR_APPLICATION_INVALID, "The application[$key] is invalid.");
+    }
+}
+
 if (!function_exists('exp_disabled_application')) {
     function exp_disabled_application($key) {
         return AppException::of(ERR_APPLICATION_DISABLED, "The application[$key] is disabled");
