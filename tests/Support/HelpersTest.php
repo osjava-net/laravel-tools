@@ -1,5 +1,6 @@
 <?php namespace Tests\Support;
 
+use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 
 class HelpersTest extends TestCase
