@@ -206,7 +206,7 @@ if (!function_exists('api_success')) {
      */
     function api_success($data = null) {
         $result = ['code' => SUCCESS_CODE, 'msg' => 'Success'];
-        if (isset($data)) $result['data'] = $data;
+        if (isset($data)) $result['data'] = array_map('strval', $data);
 
         return response()->json($result);
     }
