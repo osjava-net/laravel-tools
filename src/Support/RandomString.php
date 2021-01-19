@@ -14,7 +14,7 @@ trait RandomString
     }
 
     private function __generateString($source, $length) {
-        $max = strlen($source);
+        $max = strlen($source)-1;
         $dest = '';
         for ($index = 0; $index < $length; $index++) {
             $dest .= $source[mt_rand(0, $max)];
