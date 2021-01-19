@@ -25,17 +25,20 @@ use Illuminate\Support\Facades\Log;
  */
 class AppException extends \RuntimeException
 {
+    private $detail;
+
     /**
      * ApiException constructor.
      * @param int $code
      * @param string $message
      */
-    private function __construct(int $code, string $message) {
+    private function __construct(int $code, string $message, $detail=null) {
         parent::__construct($message, $code);
+        $this->detail = $detail ?: $message;
     }
 
-    public static function of($code, $message) {
-        return new AppException($code, $message);
+    public static function of($code, $message, $detail=null) {
+        return new AppException($code, $message, $detail);
     }
 
     /**
@@ -43,7 +46,7 @@ class AppException extends \RuntimeException
      * @return Response
      */
     public function render(Request $request) {
-        Log::error("<<< Response from [{$request->getRequestUri()}] error: $this->message");
+        Log::error("<<< Response from [{$request->getRequestUri()}] error: $this->detail");
         return \response(['code' => $this->getCode(), 'msg' => $this->getMessage()]);
     }
 }
