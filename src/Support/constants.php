@@ -45,10 +45,5 @@ const ERR_INVALID_HEADER = ERR_APP_EXCEPTION + 904;
 
 const ERR_INVALID_STATUS = ERR_APP_EXCEPTION + 905;
 
-/**
- * Application extend error codes from the value
- */
-const ERR_RUNTIME_EXCEPTION = 3000;
-
 /** Any errors are from the third party interfaces. */
 const ERR_THIRD_EXCEPTION = 4000;
