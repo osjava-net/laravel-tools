@@ -181,12 +181,12 @@ if (!function_exists('get_request_json')) {
 
 if (!function_exists('api_token')) {
     /**
-     * @param string $key
+     * @param string $secretCode
      * @param int $timer
      * @param array $params
      * @return string
      */
-    function api_token($key, $timer, $params) {
+    function api_token($secretCode, $timer, $params) {
         ksort($params);
 
         $source = $timer;
@@ -194,7 +194,7 @@ if (!function_exists('api_token')) {
             $source .= $value;
         }
 
-        $encoder = new Encrypter($key, config('app.cipher'));
+        $encoder = new Encrypter($secretCode, config('app.cipher'));
         return md5($encoder->encryptString($source));
     }
 }
