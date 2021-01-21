@@ -39,6 +39,14 @@ abstract class ValueObject implements \JsonSerializable
         return Arr::has($this->__data, $name) && $this->__data[$name] !== null;
     }
 
+    public function attr($name) {
+        if (Arr::has($this->__data, $name)) {
+            return $this->__data[$name];
+        }
+
+        return null;
+    }
+
     public function jsonSerialize() {
         return $this->__data;
     }
