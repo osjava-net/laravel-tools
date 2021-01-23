@@ -147,6 +147,22 @@ if (!function_exists('is_not_json')) {
     }
 }
 
+if (!function_exists('object_to_array')) {
+    function object_to_array($data)
+    {
+        if (is_array($data) || is_object($data))
+        {
+            $result = array();
+            foreach ($data as $key => $value)
+            {
+                $result[$key] = object_to_array($value);
+            }
+            return $result;
+        }
+        return $data;
+    }
+}
+
 if (!function_exists('get_request_header')) {
     function get_request_header($key, $default = null) {
         $value = \request()->header($key);
