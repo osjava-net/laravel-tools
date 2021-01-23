@@ -320,7 +320,7 @@ if (!function_exists('exp_unsupported_api')) {
 
 if (!function_exists('exp_internal')) {
     function exp_internal($message) {
-        return AppException::of(ERR_APP_EXTENDED, $message);
+        return AppException::of(ERR_APP_EXCEPTION, $message);
     }
 }
 
