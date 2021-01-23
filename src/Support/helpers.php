@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Encryption\Encrypter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use QFrame\Exceptions\AppException;
 use Symfony\Component\Finder\Finder;
@@ -189,13 +190,13 @@ if (!function_exists('api_token')) {
     function api_token($secretCode, $timer, $params) {
         ksort($params);
 
-        $source = $timer;
+        $source = $secretCode;
         foreach ($params as $value) {
             $source .= $value;
         }
+        $source .= $timer;
 
-        $encoder = new Encrypter($secretCode, config('app.cipher'));
-        return md5($encoder->encryptString($source));
+        return md5(sha1($source));
     }
 }
 
