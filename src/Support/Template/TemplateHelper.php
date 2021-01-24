@@ -112,7 +112,7 @@ class TemplateHelper
         /** @var Variable $variable */
         foreach ($variables as $variable) {
             $format = $variable->format ?: '[0-9a-zA-Z]';
-            $pattern = "($format+)";
+            $pattern = ($format === '[*]') ? "(.*)" : "($format+)";
             $template = str_replace($variable->expression, $pattern, $template);
             $names[] = $variable->name;
         }
