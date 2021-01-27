@@ -81,7 +81,7 @@ class TemplateHelper
      * @return string
      */
     private static function parseToString($template, $variables, $data) {
-        Log::debug("Parse template [$template] with: ", [...$variables, $data]);
+        Log::debug("Parse template [$template] with: ", [$variables, $data]);
 
         /** @var Variable $variable */
         foreach ($variables as $variable) {
