@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 abstract class ValueObject implements \JsonSerializable
 {
     // The attribute must be protected for serialization
-    protected array $__data = array();
+    protected $__data = array();
 
     public function __get($name) {
         if (Arr::has($this->__data, $name)) {
