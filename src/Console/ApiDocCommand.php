@@ -87,7 +87,7 @@ class ApiDocCommand extends Command
             }
         }
 
-        $shell = sprintf('cd %s && asciidoctor -b html5 -D %s *.adoc', config('apidoc.doc_folder'),
+        $shell = sprintf('cd %s && asciidoctor -b html5 -a description="This document is @generated automatically" -D %s *.adoc', config('apidoc.doc_folder'),
             config('apidoc.html_folder'));
         shell_exec($shell);
 
