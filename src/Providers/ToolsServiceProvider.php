@@ -17,7 +17,7 @@ class ToolsServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function boot() {
         $source = realpath($raw = __DIR__ . '/../config/apidoc.php') ?: $raw;
-        $template = realpath($raw = __DIR__ . '/../templates/index.adoc') ?: $raw;
+        $template = realpath(__DIR__ . '/../templates/index.adoc') ?: $raw;
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('apidoc.php')]);
