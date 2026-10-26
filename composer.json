@@ -12,8 +12,8 @@
     ],
     "require": {
         "php": "^8.4",
-        "symfony/finder": "^v7.0",
-        "laravel/framework": "^v12.0",
+        "symfony/finder": "^v8.1",
+        "laravel/framework": "^v13.38",
         "ext-json": "^8.4"
     },
     "autoload": {
@@ -40,7 +40,7 @@
     "require-dev": {
         "phpunit/phpunit": "^12.0",
         "mockery/mockery": "^1.6",
-        "orchestra/testbench": "^v10.0"
+        "orchestra/testbench": "^v11.0"
     },
     "scripts": {
         "post-autoload-dump": [
